@@ -1,0 +1,15 @@
+<!-- app/views/favorites/index.html.erb -->
+<h1>My Favorites</h1>
+
+<% if @favorites.any? %>
+  <ul>
+    <% @favorites.each do |favorite| %>
+      <li>
+        <%= link_to favorite.property.name, favorite.property %>
+        <%= link_to "Remove from favorites", favorite_path(@favorite), method: :delete, data: { confirm: "Are you sure you want to remove this property from favorites?" } %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No properties in favorites yet.</p>
+<% end %>
